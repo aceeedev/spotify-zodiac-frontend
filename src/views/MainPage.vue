@@ -38,10 +38,12 @@
                 const code = route.query.code;
                 if (code !== undefined) {
                     try {
-                        const response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/beta/callback?code=${code}`);
+                        const response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v1/callback?code=${code}`);
                         // JSON responses are automatically parsed.
+                        console.log("data")
                         console.log(response.data)
                     } catch (error) {
+                        console.log("error")
                         console.log(error);
                     }
                 }
