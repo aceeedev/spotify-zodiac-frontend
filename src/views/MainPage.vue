@@ -93,7 +93,7 @@
                 saveStorage('day', event.target.value)
             },
             async redirect() {
-                window.location.href='https://v519b0wsek.execute-api.us-west-1.amazonaws.com/beta/login'
+                window.location.href='https://accounts.spotify.com/authorize?response_type=code&client_id=280ec2cdd2bd49549c49ee81a7017af3&redirect_uri=https%3A%2F%2Fspotify-zodiac.netlify.app&scope=user-read-private%20user-read-email%20user-top-read'
             },
         }
     }
