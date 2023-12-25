@@ -62,7 +62,7 @@
                 const code = route.query.code;
                 if (code !== undefined) {
                     try {
-                        const response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/callback?code=${code}`);
+                        let response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/callback?code=${code}`);
 
                         const access_token = response.data['access_token'];
                         const nonce = response.data['nonce'];
