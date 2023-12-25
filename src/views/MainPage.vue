@@ -62,7 +62,7 @@
                 const code = route.query.code;
                 if (code !== undefined) {
                     try {
-                        const response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v1/callback?code=${code}`);
+                        const response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/callback?code=${code}`);
 
                         const access_token = response.data['access_token'];
                         const nonce = response.data['nonce'];
@@ -73,7 +73,7 @@
                         const house = calculateZodiacSign();
                         console.log(house);
 
-                        response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v1/collect?access_token=${access_token}&nonce=${nonce}&house=${house}`);
+                        response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/collect?access_token=${access_token}&nonce=${nonce}&house=${house}`);
 
                         console.log(response.data)
                         
