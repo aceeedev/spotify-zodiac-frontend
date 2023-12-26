@@ -8,8 +8,12 @@
             the harmony between your zodiac sign and your favorite songs. Submitting your Spotify data is 
             completely anonymous and helps find the connection between zodiac signs and music.
         </p>
+        
 
-        <div>
+        <p v-if="submitted">
+            Thank you for being apart of the solution &lt;3
+        </p>
+        <div v-else>
             <p>Please enter your birth date:</p>
             <label for="Month">Month: </label>
             <select name="Month" @change="onMonthChange($event)" class="form-control" v-model="key">
@@ -67,7 +71,8 @@
 
         data() { 
             return {
-                error: '' 
+                error: '',
+                submitted: false,
             }
         },
 
@@ -95,6 +100,9 @@
                         response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/collect?access_token=${access_token}&nonce=${nonce}&house=${house}`);
 
                         console.log(response.data)
+                        if (response.data === "success") {
+                            this.submitted = true;
+                        }
                         
                     } catch (error) {
                         console.log('error');
