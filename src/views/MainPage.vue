@@ -10,7 +10,7 @@
         </p>
         
 
-        <p v-if="submitted">
+        <p v-if="submitted" ref="submitted">
             Thank you for being apart of the solution &lt;3
         </p>
         <div v-else>
@@ -28,17 +28,18 @@
                     {{ index }}
                 </option>
             </select>
+
+            <br>
+            <button @click="redirect" style="border-radius: 12px; padding: 12px 20px;">Send</button>
         </div>
         
-        <br>
-        <button @click="redirect" style="border-radius: 12px; padding: 12px 20px;">Send</button>
         <p style="color: red">{{ error }}</p>
     </div>
 </template>
   
   
 <script>
-    import { onMounted } from 'vue'
+    import { onMounted, ref } from 'vue'
     import { useRoute, useRouter } from 'vue-router'
     import axios from 'axios';
 
@@ -80,7 +81,7 @@
             const route = useRoute();
             const router = useRouter();
 
-            const ref = this;
+            let submitted = ref(false)
 
             onMounted(async () => {
                 await router.isReady();
@@ -103,7 +104,7 @@
 
                         console.log(response.data)
                         if (response.data === "success") {
-                            ref.submitted = true;
+                            submitted.value = true;
                         }
                         
                     } catch (error) {
@@ -112,6 +113,10 @@
                     }
                 }
             })
+
+            return {
+                submitted
+            }
         },
 
         methods: {
