@@ -77,8 +77,10 @@
         },
 
         setup() {
-            const route = useRoute()
-            const router = useRouter()
+            const route = useRoute();
+            const router = useRouter();
+
+            const ref = this;
 
             onMounted(async () => {
                 await router.isReady();
@@ -101,7 +103,7 @@
 
                         console.log(response.data)
                         if (response.data === "success") {
-                            this.$submitted = true;
+                            ref.submitted = true;
                         }
                         
                     } catch (error) {
