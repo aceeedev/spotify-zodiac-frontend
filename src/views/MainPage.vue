@@ -101,7 +101,7 @@
 
                         console.log(response.data)
                         if (response.data === "success") {
-                            this.submitted = true;
+                            this.$submitted = true;
                         }
                         
                     } catch (error) {
