@@ -19,11 +19,14 @@ export default {
 
   html {
     height: 100%;
+    overflow: hidden;
   }
 
   body {
     height: 100%;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     font-family: 'Inter';
     font-weight: 300;
     font-size: 1rem;

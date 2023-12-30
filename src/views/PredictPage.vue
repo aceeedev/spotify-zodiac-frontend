@@ -1,19 +1,22 @@
 <template>
-    <div style="margin-left: 5%; margin-top: 5%;"> 
+    <div style="margin-left: 5%; margin-top: 2.5%;"> 
         <h1>Zodiac<br>Analyzer</h1>
-        <p>
-            Paste in a URL to a playlist and using the cosmic connections your predicted zodiac sign will appear
-        </p>
         
         <div v-if="Object.keys(responseData).length === 0">
+            <p>
+                Paste in a URL to a playlist and using the cosmic connections your predicted zodiac sign will appear
+            </p>
+
             <input v-model="spotifyUrl" placeholder="Playlist URL" size="150" style="border-radius: 12px; padding: 12px 20px;"/>
             <br>
             <button @click="redirect" style="border-radius: 12px; padding: 12px 20px;">Send</button>
         </div>
         <div v-else>
             <img v-bind:src="responseData.image" class="center-cropped" style="vertical-align: middle;"/>
-            <span style="vertical-align: middle;"> {{ responseData.name }} </span>
-            <span style="vertical-align: middle;"> {{ responseData.description }} </span>
+            <h3> {{ responseData.name }} </h3>
+            <h3> {{ responseData.description }} </h3>
+            <h2>The cosmos says this playlist is:</h2>
+            <h2> {{ responseData.zodiacName }} </h2>
         </div>
         
         <p style="color: red">{{ error }}</p>
@@ -82,8 +85,6 @@
                             responseData.value = response.data;
                             responseData.value.zodiacName = zodiacValues[responseData.value.house - 1][0]
                             responseData.value.zodiacEmoji = zodiacValues[responseData.value.house - 1][1]
-                            console.log(response.data)
-                            console.log(responseData)
                         } else {
                             error = 'Please try again'
                         }
@@ -97,8 +98,8 @@
                 }
             })
 
-            console.log('response data before return')
-            console.log(responseData)
+            responseData.value = {name: "chillin'", description: '', image: 'https://i.scdn.co/image/ab67706c0000da84dfefcaff1cb0f7713bb70cb9', house: 4, zodiacName: 'Cancer',}
+
             return {
                 error,
                 responseData,
@@ -126,6 +127,7 @@
 
 <style>
     .footer { 
+        margin: 0;
         position: absolute; 
         bottom: 10px; 
         left: 50%; 
