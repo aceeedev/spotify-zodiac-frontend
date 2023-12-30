@@ -31,11 +31,6 @@ export default {
 
     background-repeat: no-repeat;
     background-image: linear-gradient(45deg, #121212, 90%, #0f7031);
-
-    --secondary: #004DA6;
-    --background: white;
-    --background2: #E3E9EF;
-    --accent: #c6cbf4;
   }
 
   h1 {

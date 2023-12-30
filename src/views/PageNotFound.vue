@@ -1,21 +1,24 @@
 <template>
     <div style="margin: auto; padding: 200px 5%; text-align: center">
-      <h1 style="font-weight: 300">
-        <span style="font-weight: 400">404</span>
+      <h1 style="font-weight: 700">
+        <span style="font-weight: 900">404</span>
         <br />
-        Page not found.
+        Page not found
       </h1>
-      <router-link to="/"><div style="margin-top: 75px"><span class="return">Go to main page.</span></div></router-link>
+      <router-link to="/"><div style="margin-top: 75px"><span class="return">Go to main page</span></div></router-link>
     </div>
   </template>
   
   
-  <style scoped>
+  <style>
     .return {
-      color: var(--secondary);
+      border: 2px solid white;
       padding: 15px 45px 15px;
       border-radius: 999px;
       transition: 0.5s;
+      color: #0f7031;
+      text-decoration: underline;
+      text-decoration-color: #0f7031;
     }
   
     .return:hover {

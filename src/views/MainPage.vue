@@ -68,7 +68,7 @@
     }
 
     export default {
-        name: 'Mainpage',
+        name: 'MainPage',
 
         data() { 
             return {
@@ -94,15 +94,10 @@
                         const access_token = response.data['access_token'];
                         const nonce = response.data['nonce'];
 
-                        console.log(access_token);
-                        console.log(nonce);
-
                         const house = calculateZodiacSign();
-                        console.log(house);
 
                         response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/collect?access_token=${access_token}&nonce=${nonce}&house=${house}`);
-
-                        console.log(response.data)
+                        
                         if (response.data === "success") {
                             submitted.value = true;
                         }
