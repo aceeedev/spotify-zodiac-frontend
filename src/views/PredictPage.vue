@@ -75,6 +75,8 @@
                         
                         if (response.status === 200) {
                             responseData = response.data;
+                            console.log(response.data)
+                            console.log(responseData)
                         } else {
                             error = 'Please try again'
                         }
