@@ -79,9 +79,9 @@
                         response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/predict?access_token=${access_token}&nonce=${nonce}&uri=${uri}`);
                         
                         if (response.status === 200) {
-                            responseData = response.data;
-                            responseData.zodiacName = zodiacValues[responseData.house - 1][0]
-                            responseData.zodiacEmoji = zodiacValues[responseData.house - 1][1]
+                            responseData.value = response.data;
+                            responseData.value.zodiacName = zodiacValues[responseData.value.house - 1][0]
+                            responseData.value.zodiacEmoji = zodiacValues[responseData.value.house - 1][1]
                             console.log(response.data)
                             console.log(responseData)
                         } else {
