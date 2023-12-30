@@ -69,7 +69,7 @@
                         const nonce = response.data['nonce'];
 
                         let uri = getStorage('uri');
-                        uri = parseInt(uri.substring(1, uri.length - 1));
+                        uri = uri.substring(1, uri.length - 1);
 
                         response = await axios.get(`https://v519b0wsek.execute-api.us-west-1.amazonaws.com/v2/predict?access_token=${access_token}&nonce=${nonce}&uri=${uri}`);
                         
