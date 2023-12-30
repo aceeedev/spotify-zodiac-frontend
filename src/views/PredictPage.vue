@@ -98,8 +98,6 @@
                 }
             })
 
-            responseData.value = {name: "chillin'", description: '', image: 'https://i.scdn.co/image/ab67706c0000da84dfefcaff1cb0f7713bb70cb9', house: 4, zodiacName: 'Cancer',}
-
             return {
                 error,
                 responseData,
