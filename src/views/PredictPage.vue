@@ -1,17 +1,19 @@
 <template>
-    <div style="margin-left: 10%; margin-right: 10%;"> 
+    <div style="margin-left: 5%; margin-top: 5%;"> 
         <h1>Zodiac<br>Analyzer</h1>
         <p>
             Paste in a URL to a playlist and using the cosmic connections your predicted zodiac sign will appear
         </p>
         
-        <div v-if="Object.keys(responseData).length === 0" ref="responseData">
+        <div v-if="Object.keys(responseData).length === 0">
             <input v-model="spotifyUrl" placeholder="Playlist URL" size="150" style="border-radius: 12px; padding: 12px 20px;"/>
             <br>
             <button @click="redirect" style="border-radius: 12px; padding: 12px 20px;">Send</button>
         </div>
         <div v-else>
-            <p> {{ responseData }} </p>
+            <img v-bind:src="responseData.image" class="center-cropped" style="vertical-align: middle;"/>
+            <span style="vertical-align: middle;"> {{ responseData.name }} </span>
+            <span style="vertical-align: middle;"> {{ responseData.description }} </span>
         </div>
         
         <p style="color: red">{{ error }}</p>
@@ -39,6 +41,9 @@
     const getStorage = function(key) {
         return localStorage.getItem(key);
     };
+
+    // first value is name, second is emoji
+    const zodiacValues = [['Aries', '♈'], ['Taurus', '♉'], ['Gemini', '♊'], ['Cancer', '♋'], ['Leo', '♌'], ['Virgo', '♍'], ['Libra', '♎'], ['Scorpio', '♏'], ['Sagittarius', '♐'], ['Capricorn', '♑'], ['Aquarius', '♒'], ['Pisces', '♓']];
 
     export default {
         name: 'PredictPage',
@@ -75,6 +80,8 @@
                         
                         if (response.status === 200) {
                             responseData = response.data;
+                            responseData.zodiacName = zodiacValues[responseData.house - 1][0]
+                            responseData.zodiacEmoji = zodiacValues[responseData.house - 1][1]
                             console.log(response.data)
                             console.log(responseData)
                         } else {
@@ -90,6 +97,8 @@
                 }
             })
 
+            console.log('response data before return')
+            console.log(responseData)
             return {
                 error,
                 responseData,
@@ -116,18 +125,27 @@
 
 
 <style>
-    .container {
-        display: grid;
-        align-items: center; 
-        grid-template-columns: 1fr 1fr;
-        column-gap: 0px;
-    }
-
     .footer { 
         position: absolute; 
         bottom: 10px; 
         left: 50%; 
         z-index: 5;
         transform: translate(-50%, 0);
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 50%;
+        padding: 10px;
+    }
+
+    .center-cropped {
+        object-fit: cover;
+        object-position: center;
+        height: 250px;
+        width: 250px;
     }
 </style>
