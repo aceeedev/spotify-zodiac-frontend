@@ -106,7 +106,7 @@
                 const match = regex.exec(this.spotifyUrl);
                 saveStorage('url', match[1])
 
-                //window.location.href='https://accounts.spotify.com/authorize?response_type=code&client_id=280ec2cdd2bd49549c49ee81a7017af3&redirect_uri=https%3A%2F%2Fspotify-zodiac.netlify.app&scope=user-read-private%20user-read-email%20user-top-read'
+                window.location.href='https://accounts.spotify.com/authorize?response_type=code&client_id=280ec2cdd2bd49549c49ee81a7017af3&redirect_uri=https%3A%2F%2Fspotify-zodiac.netlify.app&scope=user-read-private%20user-read-email%20user-top-read'
             },
         }
     }
