@@ -124,7 +124,7 @@
             tryAgain() {
                 localStorage.clear();
 
-                window.location.href = "https://spotify-zodiac.netlify.com/";
+                window.location.href = "https://astrolify.netlify.com/";
             },
         }
     }
