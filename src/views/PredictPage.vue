@@ -17,6 +17,8 @@
             <h3> {{ responseData.description }} </h3>
             <h2>The cosmos says this playlist is:</h2>
             <h2> {{ responseData.zodiacName }} </h2>
+
+            <button @click="tryAgain" style="border-radius: 12px; padding: 12px 20px;">Try another playlist</button>
         </div>
         
         <p style="color: red">{{ error }}</p>
@@ -117,6 +119,12 @@
                 saveStorage('uri', match[1])
 
                 window.location.href='https://accounts.spotify.com/authorize?response_type=code&client_id=280ec2cdd2bd49549c49ee81a7017af3&redirect_uri=https%3A%2F%2Fspotify-zodiac.netlify.app&scope=user-read-private%20user-read-email%20user-top-read'
+            },
+
+            tryAgain() {
+                localStorage.clear();
+
+                window.location.href = "https://spotify-zodiac.netlify.com/";
             },
         }
     }
